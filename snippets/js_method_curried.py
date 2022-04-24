@@ -29,7 +29,7 @@ def app():
     @memoize()
     def holidays():
         trigger()
-        return sorted(set(today + timedelta(days=randint(0, 10)) for _ in range(3)))
+        return sorted(set(today + timedelta(days=randint(1, 11)) for _ in range(3)))
 
     return Space(
         [

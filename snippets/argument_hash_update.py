@@ -4,9 +4,9 @@ from reflect import get_window
 
 
 def app():
-    window = get_window()
-    name = Input(value=window.hash)
-    greeting = lambda: f"Hello {window.hash()}"
+    hash_argument = get_window().hash
+    name = Input(value=hash_argument)
+    greeting = lambda: f"Hello {hash_argument()}"
     col_name = Col(name)
     col_greeting = Col(greeting)
     return Row([col_name, col_greeting], gutter=10)
