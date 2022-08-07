@@ -16,8 +16,11 @@ def app():
     return Space(
         [
             Button("Update", onClick=controller.commit, style={"width": 90}),
+            "a =",
             a,
+            "b =",
             b,
+            "f(a) * b =",
             lambda: expensive_computation() * b(),
         ]
     )
