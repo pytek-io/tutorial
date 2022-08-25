@@ -1,7 +1,7 @@
 """Simple background async task updating display with realtime BTC quotes."""
 from json import dumps, loads
 
-from reflect import get_window, make_observable
+from reflect import get_window, create_observable
 from reflect_antd import Space
 from reflect_utils.common import ws_connection_manager
 
@@ -14,7 +14,7 @@ BTC_UPDATES_REQUEST = {
 
 
 def app():
-    btc_value = make_observable("connecting...", key="btc_update")
+    btc_value = create_observable("connecting...", key="btc_update")
 
     async def update_btc_value():
         async with ws_connection_manager(URI, dumps=dumps, loads=loads) as connection:

@@ -1,7 +1,7 @@
 """Interdependent curried Javascript callbacks. Prevent users from selecting a duration smaller than 5 days."""
 from datetime import datetime, timedelta
 
-from reflect import make_observable
+from reflect import create_observable
 from reflect.components import JSMethod
 from reflect_antd import DatePicker, Space
 
@@ -23,8 +23,8 @@ compare_dates = JSMethod(
 
 
 def app():
-    start_value = make_observable(datetime.now())
-    end_value = make_observable(datetime.now() + timedelta(days=7))
+    start_value = create_observable(datetime.now())
+    end_value = create_observable(datetime.now() + timedelta(days=7))
     min_duration = NB_MILLIS_DAY * MINIMUM_DAYS
     return Space(
         [

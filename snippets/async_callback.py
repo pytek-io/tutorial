@@ -3,14 +3,14 @@ import json
 from datetime import datetime
 
 import httpx
-from reflect import make_observable
+from reflect import create_observable
 from reflect_antd import Button, Space
 
 WORLD_TIME_URL = "http://worldtimeapi.org/api/timezone/Europe/London"
 
 
 def app():
-    time = make_observable("", key="time")
+    time = create_observable("", key="time")
 
     async def on_click():
         async with httpx.AsyncClient() as client:

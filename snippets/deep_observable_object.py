@@ -1,5 +1,5 @@
 """Features an example of deep observable data"""
-from reflect import make_observable
+from reflect import create_observable
 from reflect_antd import Button, InputNumber, Space
 from reflect_html import div
 
@@ -13,7 +13,7 @@ class Row:
 def app():
     style = {"width": 90}
     actual_row_values = [Row(2, 3)]
-    row_content_observables = make_observable(actual_row_values, depth=3, key="values")
+    row_content_observables = create_observable(actual_row_values, depth=3, key="values")
 
     def create_new_row(row_content_observable):
         a = InputNumber(value=row_content_observable.a, style=style, key="a")

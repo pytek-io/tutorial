@@ -1,10 +1,10 @@
 """Features an observable value automatically updated in the display."""
-from reflect import make_observable
+from reflect import create_observable
 from reflect_antd import Button, Space
 
 
 def app():
-    value = make_observable(0, key="value")
+    value = create_observable(0, key="value")
 
     def increment(inc_or_dec):
         nonlocal value

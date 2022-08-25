@@ -2,7 +2,7 @@
 from datetime import date, datetime, timedelta
 from random import randint
 
-from reflect import make_observable, memoize
+from reflect import create_observable, memoize
 from reflect.components import JSMethod
 from reflect_antd import Button, DatePicker, Space, Typography
 
@@ -24,7 +24,7 @@ def to_js_timestamp(python_date: date) -> int:
 
 def app():
     today = date.today()
-    start_value, trigger = make_observable(today), make_observable()
+    start_value, trigger = create_observable(today), create_observable()
 
     @memoize()
     def holidays():

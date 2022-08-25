@@ -1,5 +1,5 @@
 """Features ObservableList use, for creating a simple list of items displayed in the UI"""
-from reflect import make_observable
+from reflect import create_observable
 from reflect_ant_icons import PlusCircleFilled
 from reflect_antd import Button, Input, List, Col, Space
 from reflect_html import h5
@@ -7,8 +7,8 @@ from reflect_html import h5
 
 def app():
     users = ["John"]
-    users_obs = make_observable(users, key="users")
-    new_user_name = make_observable("", key="new user name")
+    users_obs = create_observable(users, key="users")
+    new_user_name = create_observable("", key="new user name")
 
     def add_user():
         users_obs.append(new_user_name())

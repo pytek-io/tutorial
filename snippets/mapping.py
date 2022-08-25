@@ -1,5 +1,5 @@
 """Features a depth one mapping allowing to create self containing computation rows"""
-from reflect import Mapping, make_observable
+from reflect import Mapping, create_observable
 from reflect_antd import Button, InputNumber, Space
 from reflect_html import div
 
@@ -7,7 +7,7 @@ from reflect_html import div
 def app():
     style = dict(width=90)
     actual_row_values = [{"a": 2, "b": 3}]
-    row_content_values = make_observable(
+    row_content_values = create_observable(
         actual_row_values,
         depth=3,
         key="values",
