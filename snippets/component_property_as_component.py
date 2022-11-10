@@ -1,7 +1,7 @@
 """Component property defined as component."""
-from reflect_antd import Button
-from reflect_ant_icons import SettingOutlined
+import reflect_ant_icons as ant_icons
+import reflect_antd as antd
 
 
 def app():
-    return Button("Settings", icon=SettingOutlined())
+    return antd.Button("Settings", icon=ant_icons.SettingOutlined())

@@ -1,9 +1,9 @@
 """Simple autorun use. See the messages in your browser console."""
-from reflect import autorun
-from reflect_antd import Input
+import reflect as r
+import reflect_antd as antd
 
 
 def app():
-    name = Input(defaultValue="John", key="name")
-    autorun(lambda: print("{} => {}".format(name, name())))
+    name = antd.Input(defaultValue="John", key="name")
+    r.autorun(lambda: print("{} => {}".format(name, name())))
     return name

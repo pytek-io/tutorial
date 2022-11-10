@@ -1,19 +1,26 @@
 """Formula defined as a closure."""
-from reflect_antd import InputNumber, Space, Select
-from operator import add, sub, mul, truediv, mod
+import operator
 
-OPERATIONS = {"+": add, "-": sub, "*": mul, "/": truediv, "%": mod}
+import reflect_antd as antd
+
+OPERATIONS = {
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.truediv,
+    "%": operator.mod,
+}
 
 
 def app():
-    a = InputNumber(defaultValue=2)
-    b = InputNumber(defaultValue=3)
-    operation = Select(
-        [[Select.Option(label, key=label)] for label in OPERATIONS],
+    a = antd.InputNumber(defaultValue=2)
+    b = antd.InputNumber(defaultValue=3)
+    operation = antd.Select(
+        [[antd.Select.Option(label, key=label)] for label in OPERATIONS],
         defaultValue="+",
     )
 
     def formula():
         return OPERATIONS[operation()](a(), b())
 
-    return Space([a, operation, b, "=", formula])
+    return antd.Space([a, operation, b, "=", formula])

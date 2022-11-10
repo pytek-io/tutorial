@@ -1,8 +1,8 @@
 """Child defined as an async generator from BTC quotes."""
-from json import dumps, loads
+import json
 
-from reflect_antd import Space
-from reflect_utils.common import ws_connection_manager
+import reflect_antd as antd
+import reflect_utils
 
 URI = "wss://test.deribit.com/ws/api/v2"
 BTC_UPDATES_REQUEST = {
@@ -11,12 +11,14 @@ BTC_UPDATES_REQUEST = {
     "params": {"channels": ["deribit_price_index.btc_usd"]},
 }
 
-def app():
 
+def app():
     async def btc_value():
-        async with ws_connection_manager(URI, dumps=dumps, loads=loads) as connection:
+        async with reflect_utils.ws_connection_manager(
+            URI, dumps=json.dumps, loads=json.loads
+        ) as connection:
             await connection.request_reply(BTC_UPDATES_REQUEST)
             async for update in connection:
                 yield f"{update['params']['data']['price']:,.2f}"
 
-    return Space(["BTC:", btc_value])
+    return antd.Space(["BTC:", btc_value])

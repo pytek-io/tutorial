@@ -1,19 +1,19 @@
 """Features an observable value automatically updated in the display."""
-from reflect import create_observable
-from reflect_antd import Button, Space
+import reflect as r
+import reflect_antd as antd
 
 
 def app():
-    value = create_observable(0, key="value")
+    value = r.create_observable(0, key="value")
 
     def increment(inc_or_dec):
         nonlocal value
         value.set(value() + (1 if inc_or_dec else -1))
 
-    return Space(
+    return antd.Space(
         [
-            Button("+", onClick=lambda: increment(True)),
-            Button("-", onClick=lambda: increment(False)),
+            antd.Button("+", onClick=lambda: increment(True)),
+            antd.Button("-", onClick=lambda: increment(False)),
             value,
         ]
     )

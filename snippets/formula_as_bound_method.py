@@ -1,16 +1,23 @@
 """Formula defined as a bound method."""
-from reflect_antd import InputNumber, Space, Select
-from operator import add, sub, mul, truediv, mod
+import operator
 
-OPERATIONS = {"+": add, "-": sub, "*": mul, "/": truediv, "%": mod}
+import reflect_antd as antd
+
+OPERATIONS = {
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.truediv,
+    "%": operator.mod,
+}
 
 
 class Calculator:
     def __init__(self) -> None:
-        self.a = InputNumber(defaultValue=2)
-        self.b = InputNumber(defaultValue=3)
-        self.operation = Select(
-            [[Select.Option(label, key=label)] for label in OPERATIONS],
+        self.a = antd.InputNumber(defaultValue=2)
+        self.b = antd.InputNumber(defaultValue=3)
+        self.operation = antd.Select(
+            [[antd.Select.Option(label, key=label)] for label in OPERATIONS],
             defaultValue="+",
         )
 
@@ -20,4 +27,4 @@ class Calculator:
 
 def app():
     calc = Calculator()
-    return Space([calc.a, calc.operation, calc.b, "=", calc.value])
+    return antd.Space([calc.a, calc.operation, calc.b, "=", calc.value])

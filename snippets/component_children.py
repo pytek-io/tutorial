@@ -1,10 +1,10 @@
 """Simple child/parent relationship example."""
-from reflect_html import div
+import reflect_html as html
 
 
 def app():
-    str_child = div("Lorem Ipsum")
-    int_child = div(100)
-    float_child = div(1.234)
-    parent = div([str_child, int_child, float_child])
+    str_child = html.div("Lorem Ipsum")
+    int_child = html.div(100)
+    float_child = html.div(1.234)
+    parent = html.div([str_child, int_child, float_child])
     return parent

@@ -1,12 +1,12 @@
 """App hash kept in sync, allowing state to be recorded in browser history. Will only work on its own."""
-from reflect_antd import Input, Row, Col
-from reflect import get_window
+import reflect as r
+import reflect_antd as antd
 
 
 def app():
-    hash_argument = get_window().hash
-    name = Input(value=hash_argument)
+    hash_argument = r.get_window().hash
+    name = antd.Input(value=hash_argument)
     greeting = lambda: f"Hello {hash_argument()}"
-    col_name = Col(name)
-    col_greeting = Col(greeting)
-    return Row([col_name, col_greeting], gutter=10)
+    col_name = antd.Col(name)
+    col_greeting = antd.Col(greeting)
+    return antd.Row([col_name, col_greeting], gutter=10)

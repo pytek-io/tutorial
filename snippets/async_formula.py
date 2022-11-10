@@ -1,14 +1,16 @@
-from reflect_antd import Input, Space
-from reflect_html import div
-from reflect import async_formula
 import anyio
+import reflect as r
+import reflect_antd as antd
+import reflect_html as html
 
 
 def app():
-    name = Input(defaultValue="John")
+    name = antd.Input(defaultValue="John")
 
     async def greeting():
         await anyio.sleep(1)
         return f"Hello {name()}"
 
-    return Space([name, div(async_formula(greeting, div("Thinking...")))])
+    return antd.Space(
+        [name, html.div(r.async_formula(greeting, html.div("Thinking...")))]
+    )

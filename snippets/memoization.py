@@ -1,15 +1,15 @@
 """Features a simple memoization example"""
-from reflect import memoize
-from reflect_antd import Space, InputNumber
+import reflect as r
+import reflect_antd as antd
 
 
 def app():
-    a = InputNumber(defaultValue=2)
-    b = InputNumber(defaultValue=3)
+    a = antd.InputNumber(defaultValue=2)
+    b = antd.InputNumber(defaultValue=3)
 
-    @memoize()
+    @r.memoize()
     def expensive_computation():
         print("evaluated formula")
         return sum(i * i for i in range(a()))
 
-    return Space([a, b, lambda: expensive_computation() * b()])
+    return antd.Space([a, b, lambda: expensive_computation() * b()])
