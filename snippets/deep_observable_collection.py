@@ -1,32 +1,42 @@
-"""Features an example of deep observable data"""
+"""Features an example of nested observable data"""
 import reflect as r
 import reflect_antd as antd
-import reflect_html as html
 
+DIMENSION_STYLE = {"width": 70}
+MATERIAL_STYLE = {"width": 120}
+PRICE_STYLE = {"width": 60}
+ROW_STYLE = {"marginTop": 8}
+Option = antd.Select.Option
+WOODS = [
+    {"value": "w_0134", "label": "Walnut"},
+    {"value": "w_0143", "label": "Chestnut"},
+]
+PRICES = {"w_0134": 0.789, "w_0143": 0.345}
+DEFAULT_VALUES = {"l": 200, "w": 300, "m": WOODS[0]["value"]}
+COL_SPANS = [4, 4, 8, 8]
+
+def create_new_row(content):
+    content_obs = r.DictOfObservables(content)
+    length = antd.InputNumber(value=content_obs["l"], style=DIMENSION_STYLE)
+    width = antd.InputNumber(value=content_obs["w"], style=DIMENSION_STYLE)
+    wood = antd.Select(options=WOODS, value=content_obs["m"], style=MATERIAL_STYLE)
+    price = antd.TypographyText(
+        lambda: round(length() * width() * PRICES[wood()] / 100.0, 2),
+        style=PRICE_STYLE,
+    )
+    return antd.Space([length, width, wood, price])
 
 def app():
-    style = {"width": 90}
-    actual_row_values = [{"a": 2, "b": 3}]
-    row_content_observables = r.create_observable(
-        actual_row_values, depth=3, key="values"
-    )
-
-    def create_new_row(row_content_observable):
-        a = antd.InputNumber(value=row_content_observable["a"], style=style, key="a")
-        b = antd.InputNumber(value=row_content_observable["b"], style=style, key="b")
-        return antd.Space([a, "*", b, "=", lambda: a() * b()], style=dict(marginTop=10))
-
-    return html.div(
+    rows = [DEFAULT_VALUES.copy()]
+    rows_obs = r.ObservableList(rows, key="row_content")
+    return antd.Space(
         [
+            r.Mapping(create_new_row, rows_obs),
             antd.Button(
-                "Add row",
-                style=style,
-                onClick=lambda: row_content_observables.append({"a": 2, "b": 3}),
+                "+",
+                style=DIMENSION_STYLE,
+                onClick=lambda: rows_obs.append(DEFAULT_VALUES.copy()),
             ),
-            lambda: [
-                create_new_row(row_content_value)
-                for row_content_value in row_content_observables
-            ],
         ],
-        style={"display": "flex", "flexDirection": "column"},
+        direction="vertical",
     )

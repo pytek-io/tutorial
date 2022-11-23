@@ -7,8 +7,8 @@ import reflect_html as html
 
 def app():
     users = ["John"]
-    users_obs = r.create_observable(users, key="users")
-    new_user_name = r.create_observable("", key="new user name")
+    users_obs = r.ObservableList(users, key="users")
+    new_user_name = r.ObservableValue("", key="new user name")
 
     def add_user():
         users_obs.append(new_user_name())
@@ -30,6 +30,6 @@ def app():
                     ),
                 ]
             ),
-            antd.List(lambda: [antd.List.Item(html.h5(user)) for user in users_obs]),
+            antd.List(lambda: [antd.List.Item(html.h3(user)) for user in users_obs]),
         ]
     )

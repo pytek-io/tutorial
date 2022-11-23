@@ -5,5 +5,5 @@ import reflect_antd as antd
 
 def app():
     name = antd.Input(defaultValue="John", key="name")
-    r.autorun(lambda: print(f"{name} => {name()}"))
+    r.autoprint(lambda: f"{name} => {name()}")
     return name
