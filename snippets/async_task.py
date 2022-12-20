@@ -1,9 +1,10 @@
 """Simple background async task updating display with realtime BTC quotes."""
 import json
 
-import reflect as r
 import reflect_antd as antd
 import reflect_utils
+
+import reflect as r
 
 URI = "wss://test.deribit.com/ws/api/v2"
 BTC_UPDATES_REQUEST = {

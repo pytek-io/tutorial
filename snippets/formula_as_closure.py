@@ -16,7 +16,7 @@ def app():
     a = antd.InputNumber(defaultValue=2)
     b = antd.InputNumber(defaultValue=3)
     operation = antd.Select(
-        [[antd.Select.Option(label, key=label)] for label in OPERATIONS],
+        options=[[{"children": label, "key": label}] for label in OPERATIONS],
         defaultValue="+",
     )
 

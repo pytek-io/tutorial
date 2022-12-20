@@ -1,6 +1,7 @@
 """Features a simple memoization example"""
-import reflect as r
 import reflect_antd as antd
+
+import reflect as r
 
 
 def app():

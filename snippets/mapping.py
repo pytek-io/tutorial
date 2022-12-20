@@ -1,13 +1,15 @@
 """Features a depth one mapping allowing to create self containing computation rows"""
-import reflect as r
 import reflect_antd as antd
 import reflect_html as html
+from typing import Dict
+
+import reflect as r
 
 
 def app():
     style = dict(width=90)
     actual_row_values = [{"a": 2, "b": 3}]
-    row_content_values = r.create_observable(actual_row_values, depth=3, key="values")
+    row_content_values = r.ObservableList[r.ObservableDict](actual_row_values, key="values")
 
     def create_new_row(row_content_value):
         print("called create_new_row", row_content_value)
@@ -22,7 +24,7 @@ def app():
                 style=style,
                 onClick=lambda: row_content_values.append({"a": 2, "b": 3}),
             ),
-            r.create_mapping(
+            r.Mapping(
                 create_new_row,
                 row_content_values,
                 key="mapping",

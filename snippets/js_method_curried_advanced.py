@@ -1,8 +1,9 @@
 """Interdependent curried Javascript callbacks. Prevent users from selecting a duration smaller than 5 days."""
 import datetime
 
-import reflect as r
 import reflect_antd as antd
+
+import reflect as r
 
 NB_MILLIS_DAY = 24 * 60 * 60 * 1000
 MINIMUM_DAYS = 5
