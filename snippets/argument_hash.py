@@ -4,5 +4,5 @@ import reflect_html as html
 import reflect as r
 
 
-def app():
-    return html.h1(f"Hello {r.get_window().hash()}!")
+def app(window: r.Window):
+    return html.h1(lambda: f"Hello {window.hash()}!")
