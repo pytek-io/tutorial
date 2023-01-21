@@ -1,7 +1,6 @@
 """Controlled memoized formula example."""
-import reflect_antd as antd
-
 import reflect as r
+import reflect_antd as antd
 
 
 def app():

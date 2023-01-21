@@ -1,7 +1,6 @@
 """App hash kept in sync, allowing state to be recorded in browser history. Will only work on its own."""
-import reflect_antd as antd
-
 import reflect as r
+import reflect_antd as antd
 
 
 def app():

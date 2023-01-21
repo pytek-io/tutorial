@@ -1,6 +1,5 @@
-import reflect_antd as antd
-
 import reflect as r
+import reflect_antd as antd
 
 BUTTON_TYPES = ["Default", "Primary", "Dashed", "Text", "Link"]
 

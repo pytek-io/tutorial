@@ -1,7 +1,6 @@
 """Simple Javascrip callback definition."""
-import reflect_antd as antd
-
 import reflect.components as r
+import reflect_antd as antd
 
 amount_formatter = r.JSMethod(
     "amount_formatter",

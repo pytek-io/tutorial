@@ -1,8 +1,7 @@
 """Controlled inputs, changes to those are propagated upon commit invocation."""
+import reflect as r
 import reflect_antd as antd
 import reflect_html as html
-
-import reflect as r
 
 
 def app():
@@ -20,7 +19,7 @@ def app():
                     html.div("*", style={"color": "#FFFFFF"}),
                     antd.Button("Cancel", onClick=controller.revert, style=style),
                 ],
-                style=dict(marginTop=10),
+                style={"marginTop": 10},
             ),
         ],
         style={"display": "flex", "flexDirection": "column"},
