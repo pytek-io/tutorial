@@ -1,11 +1,10 @@
-"""Simple Javascrip callback definition."""
-import reflect.components as r
+"""Simple Javascript callback definition."""
+import reflect as r
 import reflect_antd as antd
 
-amount_formatter = r.JSMethod(
+amount_formatter = r.js_arrow(
     "amount_formatter",
-    "return `$ ${value}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',')",
-    "value",
+    "(value) => `$ ${value}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',')",
 )
 
 

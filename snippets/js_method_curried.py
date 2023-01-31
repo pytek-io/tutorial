@@ -5,15 +5,9 @@ import random
 import reflect as r
 import reflect_antd as antd
 
-filter_dates = r.JSMethod(
+filter_dates = r.js_arrow(
     "filter_dates",
-    """{
-        return date.getTime() < today || date.getDay() in [0, 6] || holidays.includes(date.getTime());
-    }
-    """,
-    "today",
-    "holidays",
-    "date",
+    "(today, holidays, date) => date.getTime() < today || date.getDay() in [0, 6] || holidays.includes(date.getTime())",
 )
 
 
