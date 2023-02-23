@@ -17,7 +17,7 @@ class Calculator:
         self.a = antd.InputNumber(defaultValue=2)
         self.b = antd.InputNumber(defaultValue=3)
         self.operation = antd.Select(
-            options=[[{"children": label, "key": label}] for label in OPERATIONS],
+            options=[{"title": label, "value": label} for label in OPERATIONS],
             defaultValue="+",
         )
 
