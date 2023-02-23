@@ -8,4 +8,4 @@ def on_click():
 
 
 def app():
-    return antd.Button("Do not press this button", onClick=on_click, type="danger")
+    return antd.Button("Do not press this button", onClick=on_click, danger=True)
