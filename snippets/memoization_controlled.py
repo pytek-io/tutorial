@@ -4,9 +4,9 @@ import reflect_antd as antd
 
 
 def app():
-    controller = r.Controller()
-    a = antd.InputNumber(defaultValue=2)
-    b = antd.InputNumber(defaultValue=3)
+    with r.Controller() as controller:
+        a = antd.InputNumber(defaultValue=2)
+        b = antd.InputNumber(defaultValue=3)
 
     @r.memoize(controller=controller)
     def expensive_computation():
