@@ -5,8 +5,8 @@ INITIAL_CELSIUS_VALUE = 100
 
 
 def app():
-    farenheit_to_celsius = lambda f: int((f - 32) * 5 / 9)
-    celsius_to_farenheit = lambda c: int(c * 9 / 5 + 32)
+    farenheit_to_celsius = lambda f: None if f is None else int((f - 32) * 5 / 9)
+    celsius_to_farenheit = lambda c: None if c is None else int(c * 9 / 5 + 32)
     celsius = antd.InputNumber(
         defaultValue=INITIAL_CELSIUS_VALUE,
         onChange=lambda c: farenheit.set(celsius_to_farenheit(c)),
