@@ -17,28 +17,29 @@ def to_js_timestamp(python_date: datetime.date) -> int:
 
 def app():
     today = datetime.date.today()
-    start_value, trigger = r.create_observable(today), r.create_observable()
+    holidays = r.ObservableList()
 
-    @r.memoize()
-    def holidays():
-        trigger()
-        return sorted(
-            set(
+    def populate_holidays():
+        holidays.set(
+            sorted(
                 today + datetime.timedelta(days=random.randint(1, 11)) for _ in range(3)
             )
         )
 
+    populate_holidays()
     return antd.Space(
         [
-            antd.Button("Update", type="primary", onClick=trigger.set),
+            antd.Button("Update", type="primary", onClick=populate_holidays),
             antd.DatePicker(
-                disabledDate=filter_dates(
-                    to_js_timestamp(today), [to_js_timestamp(d) for d in holidays()]
+                disabledDate=lambda: filter_dates(
+                    today, [to_js_timestamp(d) for d in holidays]
                 ),
                 format="DD-MM-YYYY",
-                value=start_value,
-                placeholder="Start",
+                defaultValue=to_js_timestamp(today),
             ),
+            antd.Typography.Text("Holidays:"),
+            lambda: [
+                antd.Typography.Text(str(holiday), delete=True) for holiday in holidays
+            ],
         ]
-        + [antd.Typography.Text(str(holiday), delete=True) for holiday in holidays()]
     )
