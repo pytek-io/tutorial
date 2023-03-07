@@ -15,9 +15,9 @@ def app():
             antd.Space([a, "*", b, "=", formula]),
             antd.Space(
                 [
-                    antd.Button("OK", onClick=controller.commit, style=style),
-                    html.div("*", style={"color": "#FFFFFF"}),
                     antd.Button("Cancel", onClick=controller.revert, style=style),
+                    html.div("*", style={"color": "#FFFFFF"}),
+                    antd.Button("OK", onClick=controller.commit, style=style),
                 ],
                 style={"marginTop": 10},
             ),
