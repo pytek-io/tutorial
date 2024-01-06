@@ -1,8 +1,8 @@
 """Child defined as an async generator from BTC quotes."""
 import json
 
-import reflect_antd as antd
-import reflect_utils
+import render_antd as antd
+import render_utils
 
 URI = "wss://test.deribit.com/ws/api/v2"
 BTC_UPDATES_REQUEST = {
@@ -14,7 +14,7 @@ BTC_UPDATES_REQUEST = {
 
 def app():
     async def btc_value():
-        async with reflect_utils.ws_connection_manager(
+        async with render_utils.ws_connection_manager(
             URI, dumps=json.dumps, loads=json.loads
         ) as connection:
             await connection.request_reply(BTC_UPDATES_REQUEST)

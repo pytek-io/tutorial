@@ -1,5 +1,5 @@
 """Formula as a lambda expression"""
-import reflect_antd as antd
+import render_antd as antd
 
 
 def app():

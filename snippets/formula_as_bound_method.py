@@ -1,7 +1,7 @@
 """Formula defined as a bound method."""
 import operator
 
-import reflect_antd as antd
+import render_antd as antd
 
 OPERATIONS = {
     "+": operator.add,

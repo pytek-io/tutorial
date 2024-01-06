@@ -3,8 +3,8 @@ import datetime
 import json
 
 import httpx
-import reflect as r
-import reflect_antd as antd
+import render as r
+import render_antd as antd
 
 WORLD_TIME_URL = "http://worldtimeapi.org/api/timezone/Europe/London"
 

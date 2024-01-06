@@ -1,5 +1,5 @@
 """Simple child/parent relationship example."""
-import reflect_html as html
+import render_html as html
 
 
 def app():

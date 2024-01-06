@@ -1,7 +1,7 @@
 import anyio
-import reflect as r
-import reflect_antd as antd
-import reflect_html as html
+import render as r
+import render_antd as antd
+import render_html as html
 
 
 def app():
@@ -12,5 +12,5 @@ def app():
         return f"Hello {name()}"
 
     return antd.Space(
-        [name, html.div(r.async_formula(greeting, html.div("Thinking...")))]
+        [name, html.div(r.AsyncCachedEvaluation(greeting, html.div("Thinking...")))]
     )

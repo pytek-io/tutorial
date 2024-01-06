@@ -1,16 +1,15 @@
-"""Features a depth one mapping allowing to create self containing computation rows"""
-from typing import Dict
+"""Features a mapping allowing to create self containing computation rows"""
 
-import reflect as r
-import reflect_antd as antd
-import reflect_html as html
+import render as r
+import render_antd as antd
+import render_html as html
 
 
 def app():
     style = {"width": 90}
     actual_row_values = [{"a": 2, "b": 3}]
-    row_content_values = r.ObservableList[r.ObservableDict](
-        actual_row_values, key="values"
+    row_content_values = r.ObservableList[r.DictOfObservables](
+        actual_row_values, key="values", constructor=r.DictOfObservables
     )
 
     def create_new_row(row_content_value):
@@ -35,6 +34,3 @@ def app():
         ],
         style={"display": "flex", "flexDirection": "column"},
     )
-
-
-app()

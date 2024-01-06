@@ -1,6 +1,6 @@
 """Features an observable value automatically updated in the display."""
-import reflect as r
-import reflect_antd as antd
+import render as r
+import render_antd as antd
 
 
 def app():

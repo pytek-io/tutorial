@@ -1,6 +1,6 @@
 """Features an example of nested observable data"""
-import reflect as r
-import reflect_antd as antd
+import render as r
+import render_antd as antd
 
 DIMENSION_STYLE = {"width": 70}
 MATERIAL_STYLE = {"width": 120}

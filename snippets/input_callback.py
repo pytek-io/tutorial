@@ -1,5 +1,5 @@
 """Two input components kept in sync."""
-import reflect_antd as antd
+import render_antd as antd
 
 INITIAL_CELSIUS_VALUE = 100
 

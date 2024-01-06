@@ -1,5 +1,5 @@
 """Component property as a simple callable."""
-import reflect_antd as antd
+import render_antd as antd
 
 
 def on_click():

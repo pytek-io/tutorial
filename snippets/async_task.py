@@ -1,9 +1,9 @@
 """Simple background async task updating display with realtime BTC quotes."""
 import json
 
-import reflect as r
-import reflect_antd as antd
-import reflect_utils
+import render as r
+import render_antd as antd
+import render_utils
 
 URI = "wss://test.deribit.com/ws/api/v2"
 BTC_UPDATES_REQUEST = {
@@ -17,7 +17,7 @@ def app():
     btc_value = r.create_observable("connecting...", key="btc_update")
 
     async def update_btc_value():
-        async with reflect_utils.ws_connection_manager(
+        async with render_utils.ws_connection_manager(
             URI, dumps=json.dumps, loads=json.loads
         ) as connection:
             await connection.request_reply(BTC_UPDATES_REQUEST)
