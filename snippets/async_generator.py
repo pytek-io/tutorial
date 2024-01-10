@@ -12,7 +12,7 @@ BTC_UPDATES_REQUEST = {
 }
 
 
-def app():
+def app(_):
     async def btc_value():
         async with render_utils.ws_connection_manager(
             URI, dumps=json.dumps, loads=json.loads

@@ -4,7 +4,7 @@ import render_antd as antd
 import render_html as html
 
 
-def app():
+def app(_):
     name = antd.Input(defaultValue="John")
 
     async def greeting():
@@ -12,5 +12,10 @@ def app():
         return f"Hello {name()}"
 
     return antd.Space(
-        [name, html.div(r.AsyncCachedEvaluation(greeting, html.div("Thinking...")))]
+        [
+            name,
+            html.div(
+                r.AsyncCachedEvaluation(greeting, loading_value=html.div("Thinking..."))
+            ),
+        ]
     )

@@ -5,7 +5,7 @@ import render_antd as antd
 import render_html as html
 
 
-def app():
+def app(_):
     style = {"width": 90}
     actual_row_values = [{"a": 2, "b": 3}]
     row_content_values = r.ObservableList[r.DictOfObservables](

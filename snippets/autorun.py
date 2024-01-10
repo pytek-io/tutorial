@@ -3,7 +3,7 @@ import render as r
 import render_antd as antd
 
 
-def app():
+def app(_):
     name = antd.Input(defaultValue="John", key="name")
     r.autorun(lambda: print(f"{name} => {name()}"))
     return name

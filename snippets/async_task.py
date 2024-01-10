@@ -13,8 +13,8 @@ BTC_UPDATES_REQUEST = {
 }
 
 
-def app():
-    btc_value = r.create_observable("connecting...", key="btc_update")
+def app(window: r.Window):
+    btc_value = r.ObservableValue("connecting...", key="btc_update")
 
     async def update_btc_value():
         async with render_utils.ws_connection_manager(
@@ -24,5 +24,5 @@ def app():
             async for update in connection:
                 btc_value.set(f"{update['params']['data']['price']:,.2f}")
 
-    r.get_window().start_soon(update_btc_value)
+    window.start_soon(update_btc_value)
     return antd.Space(["BTC:", btc_value])

@@ -15,7 +15,7 @@ def to_js_timestamp(python_date: datetime.date) -> int:
     return int(datetime.datetime(*python_date.timetuple()[:3]).timestamp()) * 1000
 
 
-def app():
+def app(_):
     today = datetime.date.today()
     holidays = r.ObservableList()
 

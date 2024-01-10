@@ -3,7 +3,7 @@ import render as r
 import render_antd as antd
 
 
-def app():
+def app(_):
     with r.Controller() as controller:
         a = antd.InputNumber(defaultValue=2)
         b = antd.InputNumber(defaultValue=3)

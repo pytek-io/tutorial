@@ -25,6 +25,6 @@ class Calculator:
         return OPERATIONS[self.operation()](self.a(), self.b())
 
 
-def app():
+def app(_):
     calc = Calculator()
     return antd.Space([calc.a, calc.operation, calc.b, "=", calc.value])

@@ -9,7 +9,7 @@ import render_antd as antd
 WORLD_TIME_URL = "http://worldtimeapi.org/api/timezone/Europe/London"
 
 
-def app():
+def app(_):
     time = r.create_observable("", key="time")
 
     async def on_click():

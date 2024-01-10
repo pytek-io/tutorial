@@ -3,7 +3,7 @@ import render as r
 import render_antd as antd
 
 
-def app():
+def app(_):
     hash_argument = r.get_window().hash
     name = antd.Input(value=hash_argument)
     greeting = lambda: f"Hello {hash_argument()}"

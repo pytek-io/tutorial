@@ -5,7 +5,7 @@ import render_antd as antd
 import render_html as html
 
 
-def app():
+def app(_):
     users = ["John"]
     users_obs = r.ObservableList(users, key="users")
     new_user_name = r.ObservableValue("", key="new user name")

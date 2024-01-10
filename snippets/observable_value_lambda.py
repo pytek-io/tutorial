@@ -3,7 +3,7 @@ import render as r
 import render_antd as antd
 
 
-def app():
+def app(_):
     value = r.ObservableValue(0, key="value")
     return antd.Space(
         [

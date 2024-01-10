@@ -4,7 +4,7 @@ import render_antd as antd
 BUTTON_TYPES = ["Default", "Primary", "Dashed", "Text", "Link"]
 
 
-def app():
+def app(_):
     default_value = BUTTON_TYPES[0].lower()
     button_type = r.ObservableValue(default_value)
     return antd.Space(

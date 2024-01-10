@@ -4,7 +4,7 @@ import render_antd as antd
 INITIAL_CELSIUS_VALUE = 100
 
 
-def app():
+def app(_):
     farenheit_to_celsius = lambda f: None if f is None else int((f - 32) * 5 / 9)
     celsius_to_farenheit = lambda c: None if c is None else int(c * 9 / 5 + 32)
     celsius = antd.InputNumber(

@@ -7,5 +7,5 @@ def on_click():
     print(f"User disobeyed!")
 
 
-def app():
+def app(_):
     return antd.Button("Do not press this button", onClick=on_click, danger=True)

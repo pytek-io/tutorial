@@ -15,7 +15,7 @@ DEFAULT_VALUES = {"l": 200, "w": 300, "m": WOODS[0]["value"]}
 COL_SPANS = [4, 4, 8, 8]
 
 
-def create_new_row(content_obs):
+def create_new_row(content_obs: r.DictOfObservables):
     length = antd.InputNumber(value=content_obs["l"], style=DIMENSION_STYLE)
     width = antd.InputNumber(value=content_obs["w"], style=DIMENSION_STYLE)
     wood = antd.Select(options=WOODS, value=content_obs["m"], style=MATERIAL_STYLE)
@@ -25,12 +25,13 @@ def create_new_row(content_obs):
     return antd.Space([length, width, wood, price])
 
 
-def app():
+def app(_):
     rows = [DEFAULT_VALUES.copy()]
-    rows_obs = r.ObservableList[r.DictOfObservables](rows, key="row_content")
+    rows_obs = r.ObservableList(rows, key="row_content")
+    rows_obs_obs = r.Mapping(r.DictOfObservables, rows_obs)
     return antd.Space(
         [
-            r.Mapping(create_new_row, rows_obs),
+            r.Mapping(create_new_row, rows_obs_obs),
             antd.Button(
                 "+",
                 style=DIMENSION_STYLE,

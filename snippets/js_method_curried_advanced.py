@@ -15,7 +15,7 @@ compare_dates = r.js_arrow(
 )
 
 
-def app():
+def app(_):
     start_value = r.create_observable(datetime.datetime.now())
     end_value = r.create_observable(
         datetime.datetime.now() + datetime.timedelta(days=7)

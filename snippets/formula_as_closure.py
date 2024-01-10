@@ -12,7 +12,7 @@ OPERATIONS = {
 }
 
 
-def app():
+def app(_):
     a = antd.InputNumber(defaultValue=2)
     b = antd.InputNumber(defaultValue=3)
     operation = antd.Select(
