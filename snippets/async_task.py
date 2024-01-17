@@ -3,7 +3,7 @@ import json
 
 import render as r
 import render_antd as antd
-import render_utils
+from demos.connection import ws_connection_manager
 
 URI = "wss://test.deribit.com/ws/api/v2"
 BTC_UPDATES_REQUEST = {
@@ -17,7 +17,7 @@ def app(window: r.Window):
     btc_value = r.ObservableValue("connecting...", key="btc_update")
 
     async def update_btc_value():
-        async with render_utils.ws_connection_manager(
+        async with ws_connection_manager(
             URI, dumps=json.dumps, loads=json.loads
         ) as connection:
             await connection.request_reply(BTC_UPDATES_REQUEST)

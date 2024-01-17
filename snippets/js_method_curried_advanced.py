@@ -16,10 +16,8 @@ compare_dates = r.js_arrow(
 
 
 def app(_):
-    start_value = r.create_observable(datetime.datetime.now())
-    end_value = r.create_observable(
-        datetime.datetime.now() + datetime.timedelta(days=7)
-    )
+    start_value = r.ObservableValue(datetime.datetime.now())
+    end_value = r.ObservableValue(datetime.datetime.now() + datetime.timedelta(days=7))
     min_duration = NB_MILLIS_DAY * MINIMUM_DAYS
     return antd.Space(
         [

@@ -10,7 +10,7 @@ WORLD_TIME_URL = "http://worldtimeapi.org/api/timezone/Europe/London"
 
 
 def app(_):
-    time = r.create_observable("", key="time")
+    time = r.ObservableValue("", key="time")
 
     async def on_click():
         async with httpx.AsyncClient() as client:
