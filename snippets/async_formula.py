@@ -15,7 +15,7 @@ def app(_):
         [
             name,
             html.div(
-                r.AsyncCachedEvaluation(greeting, loading_value=html.div("Thinking..."))
+                r.AsyncCachedEvaluation(greeting, loading_value="Thinking...")
             ),
         ]
     )
