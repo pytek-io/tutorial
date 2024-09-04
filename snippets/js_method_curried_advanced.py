@@ -9,7 +9,7 @@ MINIMUM_DAYS = 5
 compare_dates = r.js_arrow(
     "compare_dates",
     """(date1, min_duration, greater, date2) => {
-        const [timestamp1, timestamp2] = [date1.getTime(), date2.getTime()]
+        const [timestamp1, timestamp2] = [date1.toDate().getTime(), date2.toDate().getTime()]
         return greater ? (timestamp2 + min_duration > timestamp1) : (timestamp1 + min_duration > timestamp2);
     }""",
 )

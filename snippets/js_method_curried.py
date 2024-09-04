@@ -7,7 +7,10 @@ import render_antd as antd
 
 filter_dates = r.js_arrow(
     "filter_dates",
-    "(today, holidays, date) => date.getTime() < today || date.getDay() in [0, 6] || holidays.includes(date.getTime())",
+    """(today, holidays, date) => {
+    date=date.toDate(); // Converting dayjs date to plain js date
+    return date.getTime() < today || date.getDay() in [0, 6] || holidays.includes(date.getTime())
+    }""",
 )
 
 
@@ -32,10 +35,10 @@ def app(_):
             antd.Button("Update", type="primary", onClick=populate_holidays),
             antd.DatePicker(
                 disabledDate=lambda: filter_dates(
-                    today, [to_js_timestamp(d) for d in holidays]
+                    today, [(d) for d in holidays]
                 ),
                 format="DD-MM-YYYY",
-                defaultValue=to_js_timestamp(today),
+                defaultValue=today,
             ),
             antd.Typography.Text("Holidays:"),
             lambda: [
